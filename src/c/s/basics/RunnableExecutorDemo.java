@@ -16,5 +16,6 @@ public class RunnableExecutorDemo {
 		Executor executor = Executors.newCachedThreadPool();
 		executor.execute(task1);
 		executor.execute(task2);
+		// will run for a while, waiting for new tasks.
 	}
 }
