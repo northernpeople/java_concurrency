@@ -13,11 +13,15 @@ public class CompletableFutureDemo {
 		
 		new CompletableFutureDemo().printPrice();
 	}
-	
+	/**
+	 * Uses CompletableFuture chaining to a series of async tasks.
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 */
 	public void printPrice() throws InterruptedException, ExecutionException {		
 		CompletableFuture<Double> price = 
-				getPriceAsync("a")
-				.thenApply(this::addTax)
+				getPriceAsync("a")									
+				.thenApply(this::addTax)			 		//  thenApply takes a function and returns a CompletableFuture: addTax will be applied to result of getPriceAsync when it is ready.
 				.thenApply(this::addDiscount)
 				;
 		System.out.println(price.get());
